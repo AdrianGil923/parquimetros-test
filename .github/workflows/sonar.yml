@@ -25,7 +25,6 @@ jobs:
           args: >
             -Dsonar.organization=adriangil923
             -Dsonar.projectKey=parquimetros-test
+            -Dsonar.branch.name=master
             -Dsonar.sources=.
-
-
 
