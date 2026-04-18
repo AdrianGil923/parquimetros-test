@@ -1,0 +1,28 @@
+version: "3"
+services:
+  sonarqube:
+    image: sonarqube:community
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    depends_on:
+      - db
+    networks:
+      - sonarnet
+
+  db:
+    image: postgres:13
+    container_name: sonardb
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+      - POSTGRES_DB=sonar
+    networks:
+      - sonarnet
+
+networks:
+  sonarnet:
+    driver: bridge
+
